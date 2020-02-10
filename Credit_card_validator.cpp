@@ -7,7 +7,10 @@
 
 
 //I will have to search more into Luhn algorithm, it apears that new cards no longer works,
-//but it can be fault on my part thought.
+//but it is high posibility to be fault on my part thought.
+
+//Update 10/02/2020 found the problem, bad understading of algorithm in final process
+        //Problem was me checking sum modulo to check digit instead of adding it.
 
 #include <iostream>
 #include <vector>
@@ -59,7 +62,7 @@ bool Validate(std::string& string) {
     for (auto& i : vec) {
         sum += i;
     }
-    if (sum % 10 == check_digit) 
+    if ((sum+check_digit) % 10 == 0) 
         return true;
     return false;
 }
